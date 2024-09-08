@@ -2,7 +2,7 @@ import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { IoCloseSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux';
-import { newTodo, updateTodo } from '../Redux/slices/Todoslice'; // Make sure the path and name are correct
+import { newTodo, updateTodo, deleteTodo } from '../Redux/slices/Todoslice'; // Make sure the path and name are correct
 
 const AddTodo = () => {
   const [modal, setModal] = useState(false);
@@ -64,6 +64,10 @@ const AddTodo = () => {
     setDesc('');
   };
 
+  const handleRemove = (id)=>{
+    dispatch(deleteTodo(id))
+  }
+
   return (
     <div>
       <header className="bg-white">
@@ -110,7 +114,7 @@ const AddTodo = () => {
                       >
                         Edit
                       </button>
-                      <button className="text-red-600">Delete</button>
+                      <button className="text-red-600" onClick={()=> handleRemove(todo.id)}>Delete</button>
                     </td>
                   </tr>
                 ))}
