@@ -66,6 +66,7 @@ const AddTodo = () => {
 
   const handleRemove = (id)=>{
     dispatch(deleteTodo(id))
+    toast.custom(<h1 className=' border bg-white px-5 rounded-full py-1'>delete successfully 👍</h1>)
   }
 
   return (
